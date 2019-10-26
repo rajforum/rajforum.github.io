@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Game Startup</title>
+	<style>
+		html,body,section{
+			background:black;
+			width:100%;
+			margin:0;
+			
+		}
+		.intro{
+			position:absolute;
+			visibility: hidden;
+			color:white;
+
+		}
+		#made_with{
+			
+			width:900px;
+			margin-left:25%;
+			margin-top: 20%;
+			//border:1px solid red;
+			box-sizing: content-box;
+		}
+		
+		#made_with h3{
+			display: inline-block;
+			text-align: center;
+			text-shadow: 0 0 2px white;
+			font-size: 60px;
+			vertical-align:top;
+
+		}
+		#logo{
+			width:35%;
+			height:50%;
+			margin:15% 0 0 30%;
+		}
+		
+
+
+		#user_name{
+
+			margin-top:10%;
+			margin-left: 35%;
+		}
+		#user_name h3{
+			font-size: 52px;
+
+		}
+		#user_name h1{
+			font-size: 32px;
+			margin:0;
+			text-align: center;
+		}
+
+		#user_name input {
+			height:15%;
+			width:70%;
+			font-size: 22px;
+			padding:10px;
+			border:1px solid blue;
+		}
+
+
+		.main{
+			position: absolute;
+			visibility: hidden;
+			width:22%;
+			box-shadow: 0 0 4px 2px gold;
+			border-radius: 5%;
+			margin-top: 15%;
+			margin-left: 40%;
+		}
+		.main input{
+			display:block;
+			padding:8px;
+			margin:0.5%;
+			height:12%;
+			width:99%;
+			font-size: 22px;
+			//border-radius: 10%;
+			box-shadow: 0 0 2px  black;
+		}
+		.main input : hover{
+			box-shadow: 0 0 2px 1px gold;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<div id = "made_with" class = "intro">
+			<h3>Made with -</h3><span class = "madelogo"><img src = "logo3.jpg" width = "30%" height="30%" title = "javaScript" /></span>
+		</div>
+
+		<div id = "logo" class = "intro">
+			<img src="zohologo2.jpg" width = "100%" height = "100%" title = "ZU logo"/>
+		</div>
+
+		<div id = "user_name" class = "intro">
+			<h3>Enter your Name</h3>
+			<input type="textbox" id = "user_text" value = "" >
+			<button  onclick = "disp_userName()" >submit</button>
+		</div>
+
+		<div id = "game_menu" class = "main">
+			<form>
+				<input type="button" value = "Play" onclick="getPlay()" >
+				<input type="button" value = "Instructions" onclick="getInstruction()" >
+				<input type="button" value = "Help" onclick="getHelp()" >
+				<input type="button" value = "Exit" onclick="getExit()" >
+			</form>
+		</div>
+	</section>
+
+	
+</body>
+<script src = "gameStartup.js"></script>
+<script type="text/javascript">"quiz.js"</script>
+</html>

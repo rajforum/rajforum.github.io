@@ -1,0 +1,79 @@
+		p{
+			margin:0;
+		}
+		*{
+			box-sizing: border-box;
+			padding:1px;
+
+		}
+		body{
+			background:;
+		}
+		#mainBlock{
+			width:1520px;
+			margin:auto;
+			margin-top:100px;
+			
+		}
+		.wrapper{
+			
+			margin:auto;
+			padding: 10px;
+			position:absolute;
+			
+		}
+		.container{
+			padding: 100px;			
+			border-radius: 40px 40px 0 0;
+			width:1500px;
+			height:600px;
+			
+			perspective: 100px; /* not working. */
+
+			background:#B08642;
+			font-size: 45px;
+			font-family:  Liberation Serif;
+			font-style: italic;
+			text-align: center;
+			color:#0A2012;
+			box-shadow: 0 -10px 0px 2px rgb(173, 125, 67);
+			
+		}
+		.triangle{
+
+			width:0px;
+			height:0px;
+			border-left:80px dotted transparent;
+			border-right:80px dotted #B08642;
+			border-top:80px groove transparent;
+			border-bottom:80px dotted transparent;
+
+			position :absolute;
+			top:530px;
+			left:25%;
+		}
+		
+		.writer{
+			padding:80px 30px 30px 30px;
+			width:1500px;
+			height:200px;
+			background:#333738 ;
+			border-radius:0 0 40px 40px;
+			
+		}
+		#name{
+			vertical-align: top;
+			margin-left:30%;
+			display: inline-block;
+			font-size: 40px;
+			text-align: center;
+			color:#C0C2CC ;
+			
+		}
+		.writer img{
+			width:100px;
+			height:100px;
+			margin-left: 20px;
+			background-size: cover;
+
+		}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Measure Water</title>
+	<style>
+	#container{
+		
+		position:absolute;
+		visibility:hidden;
+		border:1px solid black;
+	}
+	#wrapper{
+		
+		width:130px;
+		padding:15px;
+		box-shadow: 0 0 2px 1px black;
+		margin:auto;
+		margin-top: 50px;
+	}
+	.jug{
+		position: relative;
+		padding: 0 2px 2px 2px;
+		display:inline-block;
+		margin:20px;
+		
+		width:30px;
+		border:2px solid black;
+		border-top: 0px ;
+	}
+
+	.water{
+		position: absolute;
+		bottom:2px;
+		background-color: blue;
+		box-sizing: border-box;
+		width:30px;
+	}
+	p{
+		
+		display:inline-block;
+		font-weight:bold;
+		text-align: center;
+		margin-left: -40px;
+	}
+
+	</style>
+</head>
+<body>
+	<section id = "container">
+		
+		<section id = "wrapper">
+			<div id = "jug1" class = "jug">
+				<div id = "water1" class = "water"></div>
+			</div><p id = "water1value"></p>
+			<div id = "jug2" class = "jug">
+				<div id = "water2" class = "water"></div>
+			</div><p id = "water2value"></p>
+		</section>
+	</section>
+	<section id = "container2">
+		<h3>Assume that you have two jugs, Jug-A and Jug-B each of which holds a certain number of gallons.  Initially, both gallons are full, but we have an infinite supply of water. Our task is to measure exactly X gallons.</h3>
+		<h3>Input can be [Jug-A = 1,3,5,7,.... & Jug-B = 3,5,7,,9... & X= 2,4,6,8...] respectively </strong></p>
+		<h3>Jug-B > Jug-A </h3>
+		
+		<input type = "textbox" id = "firstNumber" placeholder="Type Jug-B size">
+		<input type = "textbox" id = "secondNumber" placeholder="Type Jug-A size">
+		<input type = "button" value = "Submit" onclick="measure()">
+	</section>
+
+</body>
+<script >
+	function check(){
+		var a = document.getElementById("firstNumber").value;
+		var b = document.getElementById("secondNumber").value;
+		console.log(a+" "+b);
+	}
+
+	function measure() {
+		//setReset();
+		var c ;
+		var a = document.getElementById("firstNumber").value;
+		var b = document.getElementById("secondNumber").value;
+
+		//document.getElementById("container2").innerHTML += "<p> Your jugs size are respectively "+a+" and "+b+".</p>"
+		//document.getElementById("container2").style.visibility = "visible";
+
+		//# a > b.*/
+		var capOf_A = a;
+		var capOf_B = b;
+
+		var current_A = a;
+		var current_B = 0;
+
+		
+		document.getElementById("jug1").style.height = (10*a)+"px";
+		document.getElementById("jug2").style.height = (10*b)+"px";
+
+		c = document.getElementById("container");
+
+		document.getElementById("water1").style.height = (current_A*10)+"px";
+		document.getElementById("water2").style.height = (current_B*10)+"px";
+
+		document.getElementById("water1value").innerText = current_A;
+			document.getElementById("water2value").innerText = current_B;
+		
+		c.innerHTML;
+		document.getElementById("container2").innerHTML += c.innerHTML;
+		//console.log(c);
+
+		console.log(current_A+"  "+current_B);
+		var count = 1;
+		var cond = 1;
+		while(cond){
+			
+			var history_A = current_A;		
+			
+			if(history_A > capOf_B ){
+				current_A = current_A - (capOf_B - current_B);
+				current_B = current_B + (history_A - current_A);
+			}
+			else{
+				current_B = history_A;
+				current_A = 0;
+			}	
+			document.getElementById("water1").style.height = (current_A*10)+"px";
+			document.getElementById("water2").style.height = (current_B*10)+"px";
+
+			document.getElementById("water1value").innerText = current_A;
+			document.getElementById("water2value").innerText = current_B;
+			c.innerHTML;
+			document.getElementById("container2").innerHTML += c.innerHTML;
+			//console.log(c);
+			//document.getElementById("water1value").innerText = current_A;
+			//document.getElementById("water1value").innerText = current_B;
+		
+			console.log(current_A+"  "+current_B);
+			
+			if(current_A == capOf_A-1){
+				//print "Number of steps : ",count
+				document.getElementById("container2").innerHTML += "<hr>";
+				cond = 0;
+				break;
+			}	
+			if(current_B == capOf_B){
+				current_B = 0;
+				document.getElementById("water1").style.height = (current_A*10)+"px";
+				document.getElementById("water2").style.height = (current_B*10)+"px";
+				document.getElementById("water1value").innerText = current_A;
+			document.getElementById("water2value").innerText = current_B;
+				c.innerHTML;
+				document.getElementById("container2").innerHTML += c.innerHTML;
+
+				//document.getElementById("water1value").innerText = current_A;
+				//document.getElementById("water1value").innerText = current_B;
+				console.log(current_A+"  "+current_B);
+				
+			}	
+			if(current_A == 0){
+				current_A = capOf_A;
+				document.getElementById("water1").style.height = (current_A*10)+"px";
+				document.getElementById("water2").style.height = (current_B*10)+"px";
+
+				document.getElementById("water1value").innerText = current_A;
+			document.getElementById("water2value").innerText = current_B;
+				c.innerHTML;
+				document.getElementById("container2").innerHTML += c.innerHTML;
+
+				//document.getElementById("water1value").innerText = current_A;
+				//document.getElementById("water1value").innerText = current_B;
+				console.log(current_A+"  "+current_B);
+			}
+		}
+	}	
+	//measure();	
+	function setReset(){
+		document.getElementById("container2").style.visibility = "hidden";
+	}
+			
+
+
+</script>
+</html>

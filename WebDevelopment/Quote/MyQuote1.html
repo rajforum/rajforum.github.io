@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Quote</title>
+	<script src = "Quotes.js"></script>
+
+	<style>
+		p{
+			margin:0;
+		}
+		*{
+			box-sizing: border-box;
+			padding:1px;
+
+		}
+		.wrapper{
+			margin:auto;
+			box-shadow: 0 0 3px black;
+			padding: 10px;
+			position:absolute;
+			
+		}
+		.container{
+			padding: 100px;			
+			border-radius: 40px 40px 0 0;
+			width:1500px;
+			height:600px;
+			
+			perspective: 100px; /* not working. */
+
+			background:#B08642;
+			font-size: 45px;
+			font-family:  Liberation Serif;
+			font-style: italic;
+			text-align: center;
+			color:#0A2012;
+			box-shadow: 0 -10px 0px 2px rgb(173, 125, 67);
+
+			
+		}
+		.triangle{
+
+			width:0px;
+			height:0px;
+			border-left:80px dotted transparent;
+			border-right:80px dotted #B08642;
+			border-top:80px groove transparent;
+			border-bottom:80px dotted transparent;
+
+			position :absolute;
+			top:530px;
+			left:25%;
+		}
+		
+		.writer{
+			padding:80px 30px 30px 30px;
+			width:1500px;
+			height:200px;
+			background:#333738 ;
+			border-radius:0 0 40px 40px;
+			
+		}
+		#name{
+			vertical-align: top;
+			margin-left:30%;
+			display: inline-block;
+			font-size: 40px;
+			text-align: center;
+			color:#C0C2CC ;
+			
+		}
+		.writer img{
+			width:100px;
+			height:100px;
+			margin-left: 20px;
+			background-size: cover;
+
+		}
+	</style>
+</head>
+<body>
+	<section class = "wrapper">
+		<div class = "container"></div>
+		<!--<div class = "triangle"></div>-->
+		<div class = "writer">
+			<a href = "https://en.wikipedia.org/wiki/" ><img src="wiki.png" title = "link"></a>
+			<div id = "name"></div>
+		</div>
+	</section>
+</body>
+
+<script type="text/javascript">
+	/*console.log("quote : "+QUOTES.data[1].quotes);
+	console.log("writer : "+QUOTES.data[0].name);
+	console.log("length : "+QUOTES.data.length);
+	*/
+	
+	var i = -1;
+	/*var s = document.createElement("section");
+	s.setAttribute("class","wrapper");
+
+	var d1 = document.createElement("div");
+	d1.setAttribute("class","container");
+
+	var d2 = document.createElement("div");
+	d2.setAttribute("class","triangle");
+
+	var d3 = document.createElement("div");
+	d3.setAttribute("class","writer");*/
+
+	//to get data from Quote.js 
+	function getData() {
+		//for(var i = 0; i < QUOTES.data.length; ++i){
+			++i;
+			//var qu = document.createElement("p");
+			document.querySelector(".container").innerText = QUOTES.data[i].quotes;
+			//var qu = document.createTextNode(""+QUOTES.data[i].quotes+"");
+			//qu.innerText =  QUOTES.data[i].quotes;
+			//document.body.appendChild(qu);
+			//d1.appendChild(qu);
+			//var wr = document.createElement("li");
+			 document.querySelector("#name").innerText = QUOTES.data[i].name;
+			//wr.innerText = QUOTES.data[i].name;
+			//d3.appendChild(wr);
+
+			
+			
+
+			
+		//}
+
+		s.appendChild(d1);
+
+		s.appendChild(d2);
+		s.appendChild(d3);
+		document.body.appendChild(s);
+
+		
+	}
+		
+
+		
+	setInterval(getData,1000);
+
+</script>
+</html>
+<!--
+/*var s = document.createElement("section");
+	s.setAttribute("class","wrapper");
+
+	var d1 = document.createElement("div");
+	d1.setAttribute("class","container");
+
+	var d2 = document.createElement("div");
+	d2.setAttribute("class","triangle");
+
+	var d3 = document.createElement("div");
+	d3.setAttribute("class","writer");*/
+
+	/*console.log("quote : "+QUOTES.data[1].quotes);
+	console.log("writer : "+QUOTES.data[0].name);
+	console.log("length : "+QUOTES.data.length);
+	*/
+
+	s.appendChild(d1);
+		s.appendChild(d2);
+		s.appendChild(d3);
+		document.body.appendChild(s);
+
+	-->

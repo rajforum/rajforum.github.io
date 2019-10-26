@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stopwatch</title>
+	<style>
+	body{
+		background:#FFE7D6;
+	}
+	*{
+		outline:none;
+	}
+		.container{
+			box-shadow: 0 0 3px 1px grey;
+			width:380px;
+			padding:5px 5px 3px 5px;
+			margin:auto;
+			background: #F9F9F9;
+		}
+		h3{
+			border-bottom: .2px solid violet;
+			display: inline;
+			padding:10px 5px 1px 5px;
+			
+		}
+		.box{
+			box-sizing: border-box;
+			height:520px;
+			padding:0 5px 0 5px;
+			text-align: center;
+			//border:1px solid red;
+			
+		}
+		#display{
+			position: relative;
+			top:120px;
+			box-sizing: border-box;
+			height:80px;
+			line-height: 80px;
+			font-size: 32px;
+			box-shadow:inset 1px 1px 4px 2px black;
+			margin-top:20px; 
+			transition:1s;
+			word-spacing: 5px;
+			text-align: center;
+		}
+		#screen{
+			transform:translate(-25px);
+			transition:1s;
+			//border:1px solid blue;
+		}
+		
+		#screen div{
+			
+			display: inline-block;
+			width:50px;
+			margin:auto;
+			word-spacing: 5px;
+			letter-spacing: 1px;
+			//border:1px solid red;			
+		}
+		#hour{
+			visibility: hidden;
+		}
+		#dot1{
+			visibility: hidden;
+		}
+		#preview{
+			width:80%;
+			height:90%%;
+			display: inline-block;
+			//box-sizing: border-box;
+			padding:10px 20px 20px 5px ;
+			overflow:auto;
+			margin-top:50px;
+			height:220px;
+			transition:2s;
+			//word-spacing: 3px;
+			//border:1px solid red;
+		}
+		.touch_button{
+			height:40px;
+			margin:-4px 0 3px 0;
+
+		}
+		
+		input[type = "button"]{
+			width:190px;
+			height:40px;
+			font-size:22px;
+			background: blue;
+			color:white;
+			
+		}
+		#start{
+			position:absolute;
+			width:380px;
+			visibility: visible;
+			
+		}
+		#button_left{
+			visibility: hidden;
+			position: absolute;
+			
+			
+		}
+		#button_right{
+			visibility: hidden;
+			position: absolute;
+			
+			
+		}
+		#stop{
+			background-color:red;
+			
+		}
+		#resume{
+			background-color:green;
+			
+		}
+		
+	</style>
+</head>
+<body>
+	<section class = "container" >
+		<div class ="box">
+		<h3>Stopwatch</h3>
+		<div id = display>
+		<div id = "screen">
+			<div id = "hour"></div><span id = "dot1">:</span><div id = "minute"></div><span class = "dot">:</span><div id = "second"></div><span class = "dot">:</span><div id = "milliSecond"></div>
+		</div>
+		</div>
+
+		<div id = "preview">
+			<ol id="olPreview">
+			</ol>
+		</div>
+		
+		</div><hr>
+
+		<div class = "touch_button">
+			
+				<input id = "start" type="button" value = "Start" onclick = "getStart()">
+			<span id = "button_left">
+				<input id = "stop" type="button" value = "Stop" onclick = "getStop()">
+				<input id = "lap" type="button" value = "Lap" onclick = "getLap()">
+			</span>
+
+			<span id = "button_right">
+				<input id = "resume" type="button" value = "Resume" onclick = "getResume()">
+				<input id = "reset" type="button" value = "Reset" onclick = "getReset()">
+			</span>
+		</div>
+	</section>
+	<!--<iframe src="file:///home/test/ZU-35/upload/stopwatch.html"></iframe>-->
+</body>
+<script>
+	var sec , min , hr , time , count = 0, mSec;
+
+	setDefault();
+	
+
+	function getTimer() {
+		mSec++
+		if(mSec < 100){
+			document.getElementById("milliSecond").innerHTML = mSec;
+		}else{
+			mSec = 0;
+			document.getElementById("milliSecond").innerHTML = mSec;
+
+			sec++;
+			if(sec < 60){
+				document.getElementById("second").innerHTML = sec;
+			}else{
+				sec = 0;
+				document.getElementById("second").innerHTML = sec;
+
+				min++;
+				if(min < 60){
+					document.getElementById("minute").innerHTML = min;
+				}else{
+					min = 0;
+					document.getElementById("minute").innerHTML = min;
+
+					hr++;
+					if(hr < 24){
+						document.getElementById("screen").style.transform = "translate(0px)";
+						document.getElementById("hour").style.visibility = "visible";
+						document.getElementById("dot1").style.visibility = "visible";
+						document.getElementById("hour").innerHTML = hr;
+					}else{
+						setDefault();
+						getStart();
+					}
+				}
+			}
+		}
+	}
+	
+	function startTime() {
+		time = setInterval(getTimer,10);
+	}
+	function clearTime() {
+		clearInterval(time);
+	}
+
+
+	function getStart() {
+		startTime();
+		document.getElementById("start").style.visibility = "hidden";
+		document.getElementById("button_left").style.visibility = "visible";
+		
+	}
+	function getStop() {
+		clearTime();
+		document.getElementById("button_left").style.visibility = "hidden";
+		document.getElementById("button_right").style.visibility = "visible";
+	}
+	function getResume() {
+		startTime();
+		document.getElementById("button_right").style.visibility = "hidden";
+		document.getElementById("button_left").style.visibility = "visible";
+	}
+	function getLap(){
+		document.getElementById("display").style.top = "0px";
+		document.getElementById("preview").style.borderTop = ".1px solid grey";
+
+		var c = document.getElementById("display");
+		c.innerHTML;
+		document.getElementById("olPreview").innerHTML += "<li>"+c.innerHTML+"<br></li>";
+														 
+	}
+	function getReset() {
+		
+		setDefault();
+		document.getElementById("button_right").style.visibility = "hidden";
+		document.getElementById("start").style.visibility = "visible";
+
+		document.getElementById("preview").innerHTML = "";
+		document.getElementById("preview").style.borderTop = "2px dotted white";
+		document.getElementById("display").style.top = "120px";
+
+	}
+	function setDefault(){
+		mSec = 0, sec = 0 , min = 0 , hr = 0;
+		clearTime();
+		var d = document.getElementsByClassName("dot")[0].innerHTML;
+		console.log(d);
+		document.getElementById("milliSecond").innerHTML = mSec;
+
+		document.getElementById("second").innerHTML = sec;
+		document.getElementById("minute").innerHTML = min;
+		document.getElementById("hour").innerHTML = hr;
+	}
+
+	
+	
+</script>
+</html>

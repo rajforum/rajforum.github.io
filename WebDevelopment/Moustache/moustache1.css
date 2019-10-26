@@ -1,0 +1,46 @@
+.moustache{
+	position:absolute;
+	width:100px;
+	height:100px;
+	color:#000000;
+	background-color:;
+	border-radius: 50%; 
+	box-shadow: 100px 200px 0 0 currentColor , 180px 200px 0 0 currentColor;
+	
+}
+.turn{
+	position:absolute;
+	left:58px;
+	top:208px;
+	height:100px;
+	width:100px;
+	background-color: currentColor;
+	border-radius: 0px 0px 0px 100px;
+	//box-shadow: 100px 0px 0 0 currentColor;
+	transform-origin: 100px 50px;
+	//transform:rotate(20deg);
+	transition:transform 3s;
+	
+	
+}
+.turn1{
+	position:absolute;
+	left:238px;
+	top:208px;
+	height:100px;
+	width:100px;
+	background-color: currentColor;
+	border-radius: 0px 0px 100px 0px;
+	//box-shadow: 100px 0px 0 0 currentColor;
+	transform-origin: 0 50px;
+	transition:transform 3s;
+	
+}
+body:hover{
+	.turn1{
+		transform:rotate(-20deg);	
+	}
+	.turn2{
+		transform:rotate(20deg);	
+	}
+}

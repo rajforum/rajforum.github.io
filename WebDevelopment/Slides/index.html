@@ -1,0 +1,114 @@
+<!doctype HTML>
+<html>
+<head>
+<title>Sliding Images</title>
+<style>
+
+html,body,section{
+	width:100%;
+	height:100%;
+	
+	margin:0;
+	
+}
+
+#main{
+	/*background-image:url(a1.jpg);
+	background-image:url(a2.jpg);
+	background-image:url(a3.jpg);*/
+	vertical-align:middle;
+	//border:1px solid black;
+	width:100%;
+	height:100%;	
+	margin: auto;
+	text-align:center;
+	line-height:30px;
+	background-size:cover;
+	transition:1.3s ;
+	vertical-align:bottom;
+}
+button{
+	border-radius:1px 10px;
+	//border:act;
+	outline:none;
+	height:30px;
+	margin:3px;s
+}
+
+</style>
+</head>
+	<body>
+	<section id = "container">
+		
+		<div id = "main">
+			<button id = "prev" onclick = "getPrev()">prev</button>
+			<button id = "next" onclick = "getNext()">next</button><br>
+			
+			<button onclick = "doBackward()">backward</button>
+			<button onclick = "doPlay()">play</button>
+			<button onclick = "doPause()">pause</button>
+			<button onclick = "doForward()">forward</button><br>
+			
+			<button onclick = "doStop()">Stop</button>
+		</div>
+		
+	</section>
+	
+	</body>
+	<script>
+		
+		var num = ["a0.jpg" , "a1.jpg" , "a2.jpg" , "a3.jpg" , "a4.jpg" , "a5.jpg" ];
+		
+		
+		var i = 0; //pointer for current index position
+		c = document.getElementById("main").style;
+		//c.innerHTML = "<img src = \""+num[i]+"\"/>";
+		c.backgroundImage = "url("+num[i]+")";
+		var m,m1;
+		
+		function getNext() {
+			i += 1; 			
+			(i == num.length) ? (i = 0 , c.backgroundImage = "url("+num[i]+")")
+			:c.backgroundImage = "url("+num[i]+")";
+			//console.log(c.backgroundImage);
+		}
+		
+		function getPrev() {
+			i -= 1;
+			(i < 0) ? (i = (num.length -1) , c.backgroundImage = "url("+num[i]+")")			//??i++ & i+=1
+			:c.backgroundImage = "url("+num[i]+")";	
+			//console.log(c.backgroundImage);
+		}
+		
+		function doStop() {
+			clearInterval(m);
+			i = 0;
+			c.backgroundImage = "url("+num[i]+")";
+			//console.log(c.backgroundImage);
+		}
+		
+		function doPause() {
+			clearInterval(m);
+			//console.log(c.backgroundImage);
+		}
+		
+		function doForward() {
+			doPause()
+			m = setInterval(getNext,3000);
+			//console.log(c.backgroundImage);
+			m1 = 1;
+		}
+		
+		function doBackward() {
+			doPause()
+			m = setInterval(getPrev,3000);
+			//console.log(c.backgroundImage);
+			m1 = 0;
+		}
+		
+		function doPlay() {
+			(m1 == 1) ? doForward() : doBackward();
+		}
+		
+	</script>
+</html>

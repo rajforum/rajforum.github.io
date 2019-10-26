@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>?is</title>
+	<style>
+	*{
+		box-sizing: border-box;
+		outline: none;
+	}
+
+	body{
+		background-color: #EDEDEE;
+		
+	}
+	#timer{
+		
+		margin-left:450px;
+		width:100px;
+		height:50px;
+		text-align: center;
+		line-height: 50px;
+		font-size: 32px;
+		border-radius: 50px 50px 0 0;
+		box-shadow: 0 0 8px 1px red;
+	}
+
+	#container{
+		width:1020px;
+		padding:10px;
+		//border:1px solid black;
+		margin:auto;
+		margin-top:150px;
+	}
+
+	#option{
+		width:800px;
+		margin:10px auto;
+		
+	}
+	.box{
+		
+		display:inline-block;
+		width:350px;
+		height:60px;
+		border:1px solid black;
+		border-radius:60px;
+		margin:20px;
+		padding:10px;
+		font-size:22px;
+	}
+	.box:hover{
+		background-color: red;
+		box-shadow:0 0 5px 2px black;
+	}
+
+	#ques{
+		background-color: #6083F0;
+		width:1000px;
+		height:150px;
+		border-left:5px solid #00071E;
+		border-right:5px solid black;
+		border-radius: 150px 0 150px 0;
+		padding:20px 150px 20px 150px;
+		box-shadow: 0 0 10px black;
+		text-align: center;
+		font-size: 28px;
+	}
+
+	#gameOver{
+		box-sizing: content-box;
+		background-color: white;
+		position:absolute;
+		float:left;
+		left:250px;
+		top:40px;
+		display:none;
+		//visibility:hidden;
+		padding:20px;
+		text-align: center;
+		font-size: 45px;
+		width:800px;
+		height:500px;
+		margin:20px auto;
+		box-shadow: 0 0 5px black;
+		border-radius: 50px 0 50px 0;
+	}
+	h1{
+		margin-bottom: 0;
+		text-shadow: -13px -10px 5px  red;
+		color:rgba(0,0,0,0.9);
+		transition:3s;
+	}
+	
+
+	hr{
+		box-shadow: 0px 0px 4px black;
+		border-radius: 100% 0 100% 0;
+	}
+	
+	img{
+		margin:15px;
+		width:70px;
+		height:70px;
+		border-radius: 50%;
+		padding: 10px;
+		box-shadow: 0 0 3px black;
+	}
+	img:hover{
+		box-shadow:1px 1px 6px 2px black;
+	}
+
+	#preview{
+		color:white;
+		cursor: pointer;
+		writing-mode: vertical-lr;
+		font-size: 22px;
+		letter-spacing: -5px;
+		text-orientation: upright;
+		position:absolute;
+		left:0;
+		top:390px;
+		width:30px;
+		background-color: #E94A00;
+		border-radius:0 8% 8% 0;
+		height:150px;
+		
+		
+	}
+
+	#preview_box{
+		display:none;
+		//visibility: hidden;
+		position:absolute;
+		background: white;
+		overflow: auto;
+		padding:20px;
+		top:30px;
+		left:32%;
+		width:500px;
+		height:600px;
+		box-shadow: 0 0 2px black;
+	}
+	#preview_box img{
+		position:absolute;
+		padding:0;
+		top:-12px;
+		left:-12px;
+		box-shadow:0 0 1px black;
+		border-radius: 0	;
+		width:20px;
+		height:20px;
+		align-content: right;
+	}
+	#preview_box img:hover{
+		box-shadow: 0 0 4px 1px #C40000;
+	}
+
+
+	
+	
+	/*#circle{
+		width:45px;
+		height:90px;
+		border-radius: 90px 0 0 0px;
+		border:1px solid black;
+	}
+	#circle2{
+		width:90px;
+		height:90px;
+		border-radius: 90px 0 0 90px;
+		border:1px solid black;
+	}*/
+
+	</style>
+</head>
+<body>
+	<!--<div id = "circle"></div>
+	<div id = "circle2"></div>-->
+
+	<section id = "container">
+		<div id = "timer"></div>
+		<div id = "ques" ></div>
+		<div id = "option" >
+			<input type = "button" id = "op0" class = "box" onclick = "userInput(this)" />
+			<input type = "button" id = "op1" class = "box" onclick = "userInput(this)" /><br>
+			<input type = "button" id = "op2" class = "box" onclick = "userInput(this)" />
+			<input type = "button" id = "op3" class = "box" onclick = "userInput(this)" />
+		</div>
+
+		<div id = "gameOver">
+			<h1 id = "h1">Game Over</h1><hr>
+			<p>You scored : <span id = "result"></span></p>
+			
+			<p>Your points : <span id = "points"></span></p>
+			<nav id = "preview" onclick = "showPreviewBox()">preview</nav>
+			<img src = "replay4.png" title="restart" onclick="restart()" />
+			<img src = "home.png" title="home" onclick="home()" />
+			<img src = "share.png" title="share" onclick="sociaShare()" />
+			
+		</div>
+		
+		<div id = "preview_box">
+			<img src = "cancel_icon.png" title = "cancel" onclick = "cancel_PreviewBox()" />
+		</div>
+
+	</section>
+</body>
+	<script src = "quiz.js"></script>
+</html>
